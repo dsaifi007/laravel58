@@ -67,5 +67,5 @@ Route::get('/policy/verify','StudentController@create');
 Route::post('/ajax/call','StudentController@store')->name("ajaxcall");
 Route::get('email/list','StudentController@getEmail');
 Route::get('middleware/{parm}','StudentController@index')->middleware('middleware_parameter:parm');
-Route::get('string','StudentController@string');
+Route::get('stringa','StudentController@string');
 Route::get('event','StudentController@eventGenrate');
