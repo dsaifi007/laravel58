@@ -69,3 +69,5 @@ Route::get('email/list','StudentController@getEmail');
 Route::get('middleware/{parm}','StudentController@index')->middleware('middleware_parameter:parm');
 Route::get('string','StudentController@string');
 Route::get('event','StudentController@eventGenrate');
+
+Route::post('/ajax/imgupload','StudentController@imgupload')->name('ajaximg.upload');

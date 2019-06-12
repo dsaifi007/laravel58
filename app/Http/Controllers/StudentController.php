@@ -48,7 +48,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(array("id"=>$request->input('id')),200);
+        return response()->json(array("id"=>1),200);
         //dd($request->input('id'));
     }
 
@@ -128,5 +128,10 @@ class StudentController extends Controller
             echo trim($a[$i]);
         }
          
+    }
+    public function imgupload()
+    {
+        //echo "Eee";
+       dd($_FILES);
     }
 }
