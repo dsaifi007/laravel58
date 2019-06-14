@@ -119,15 +119,16 @@ class StudentController extends Controller
 
         event(new SendEmail($data)); 
     }
-    public function string()
+    public function matrix()
     {
-        $a = "a b c d";
-        $inc = 'a';
-        for ($i=0; $i <strlen($a) ; $i++) { 
-            //$inc.=$a[$i];
-            echo trim($a[$i]);
-        }
-         
+        $in = 1;
+        for ($i=0; $i <=3 ; $i++) { 
+               for ($j=1; $j<=4;$j++) { 
+                   echo $in."&emsp;";
+                   $in++;
+               }
+               echo "<br>";
+            }    
     }
     public function imgupload()
     {

@@ -134,7 +134,7 @@
 
     $("#btn").click(function(){
       var total_div = $(".a").size;
-      alert(total_div);
+      //alert(total_div);
       var i = $("input[name='t']").val();
       if(i == 0){
         $(".a").hide();
