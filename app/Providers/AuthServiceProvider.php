@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('custom-resource', function ($user) {
            // dd($user);
-            return ($user->id == 232) ? true : false;;
+            return ($user->id == 5) ? true : false;;
         });
         //
     }

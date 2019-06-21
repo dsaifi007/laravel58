@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        echo "ee";die;
+        //echo "ee";die;
         // for authentication of  resource
         if(Gate::allows('custom-resource','App\User')){
             echo "Verify";
@@ -34,6 +34,7 @@ class StudentController extends Controller
     {
         // for authentication of CURD
         $this->authorize('create','App\Student');
+        
         echo "successfully";
     }
     function test(){
@@ -60,7 +61,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+       $this->authorize('view',$student);
+       echo $id;die;
     }
 
     /**
@@ -69,9 +71,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Student $student,$id)
     {
-        //
+       // echo $id;die;
+       $this->authorize('update','App\Student');
     }
 
     /**
@@ -83,7 +86,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+       
     }
 
     /**

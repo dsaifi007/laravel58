@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Student;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Posts;
 
 class StudentPolicy
 {
@@ -19,7 +20,7 @@ class StudentPolicy
      */
     public function view(User $user, Student $student)
     {
-        //
+        dd($student);
     }
 
     /**
@@ -30,8 +31,8 @@ class StudentPolicy
      */
     public function create(User $user)
     {
-        //echo $user->id;die;
-        return ($user->id == 35) ? true : false;
+        dd($user);
+        return ((int)$user->id == "5") ? true : false;
     }
 
     /**
@@ -41,9 +42,9 @@ class StudentPolicy
      * @param  \App\Student  $student
      * @return mixed
      */
-    public function update(User $user, Student $student)
+    public function update(User $user)
     {
-        //
+        dd($user);
     }
 
     /**
@@ -80,5 +81,9 @@ class StudentPolicy
     public function forceDelete(User $user, Student $student)
     {
         //
+    }
+    public function demo(User $user)
+    {
+        dd($user);
     }
 }

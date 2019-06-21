@@ -31,19 +31,26 @@
     </div>
 
      <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="file" class="form-control" id="file"   name="file">
+      <label for="email">File1:</label>
+      <input type="file" class="form-control" id="file1"   name="file[]">
     </div>
+
+<!--     <div class="form-group">
+      <label for="email">File2:</label>
+      <input type="file" class="form-control" id="file2"   name="file[]">
+    </div>
+ -->
+
     <div class="form-group">
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" value='' placeholder="Enter password" name="pwd">
 
     </div>
-     <input type="checkbox" name="ab" id='ab'>Checkbox
+     <input type="checkbox" name="ab" id='ab'>Checkbox<br><br>
     <button type="submit" name="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-<input type="hidden" name="t" value="0">
+<!-- <input type="hidden" name="t" value="0">
 <div  style="width:50px;height:50px;background:red" class="a">
 </div><br>
 <div  style="width:50px;height:50px;background:red" class="a">
@@ -53,7 +60,7 @@
 <div  style="width:50px;height:50px;background:red" class="a">
 </div><br>
 <div  style="width:50px;height:50px;background:red" class="a">
-</div><br>
+</div><br> 
 
 <section class="group">
   <div class="header">Header 2</div>
@@ -65,7 +72,7 @@
    
 </section>
 
-<button id="btn"> Submit </button>
+<button id="btn"> Submit </button>-->
   @push('scripts')
    
     <script type="text/javascript">
@@ -106,6 +113,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         }); 
+        
         // var formData = $("#file").prop("files")[0]; //new FormData(this);
         // console.log(formData);
        $.ajax({

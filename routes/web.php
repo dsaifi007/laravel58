@@ -56,6 +56,8 @@ Route::get('notify/index', 'NotificationController@index');
 Route::get('userinfo/{user}', function (App\User $user) {
     echo $user->email;
 })->middleware('verified');
+
+
 Route::get("postinfo","PostsController@index")->middleware('verified','auth','test');
 Route::get("retry","PostsController@retry")->middleware('verified','auth');
 Route::get("postcreate","PostsController@create");
@@ -64,6 +66,7 @@ Route::resource('postcurd','PostsController');
 Route::get('gate/verify','StudentController@index');
 Route::get('app/test','StudentController@test');
 Route::get('/policy/verify','StudentController@create');
+Route::get('/policy/verify/{id}','StudentController@edit');
 Route::post('/ajax/call','StudentController@store')->name("ajaxcall");
 Route::get('email/list','StudentController@getEmail');
 Route::get('middleware/{parm}','StudentController@index')->middleware('middleware_parameter:parm');
@@ -71,3 +74,4 @@ Route::get('matrix','StudentController@matrix');
 Route::get('event','StudentController@eventGenrate');
 
 Route::post('/ajax/imgupload','StudentController@imgupload')->name('ajaximg.upload');
+Route::get('/user/info','StudentController@show');

@@ -6,6 +6,8 @@ use App\Posts;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use Exception;
+
 class PostsController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $user = User::find(1);
+        $user = User::find(5);
         echo $user->email;
         //$post  = Posts::find(1);
         //dd($user->user);
@@ -43,12 +45,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //echo $request->file('file');die;
+        //dd($request->all());die;
         
          $validatedData = $request->validate([
             'email' => 'required|min:10|max:255',
             'pwd' => 'required',
-            'file'=>'required|file|mimes:jpeg,jpg,png'
+            'file'=>'required|mimes:jpeg,jpg'
             ]);
           $path = $request->file('file')->store('img');
          //echo $path."sss";die;
@@ -103,11 +105,16 @@ class PostsController extends Controller
     }
     public function retry()
     {
-        die;
-        $respond = \Auth::guard('admin')->attempt(['email' =>'admin@gmail.com', 'password' => '12345678']);
-        dump($respond);die;
-        return retry(1, function () {
-            echo "ss";
+        $fail = \Auth::guard('admin')->attempt(['email' =>'danish.khan@syncrasytech.com', 'password' => '12345678']);
+        //dump($respond);die;
+        return retry(1,function () use (&$fail) {
+            if ($fail) {
+                    $fail = false;
+                    //throw new \Exception("Boom!");
+                    abort(403);
+                } else {
+                    return "Woo!";
+                }
             // Attempt 5 times while resting 100ms in between attempts...
         }, 100);
     }
