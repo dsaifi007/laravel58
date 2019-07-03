@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-
+use Auth;
 
 class LoginController extends Controller
 {
@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    protected function credentials(Request $request)
+    /*protected function credentials(Request $request)
     {
         //dd($request->all());
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
@@ -47,6 +47,25 @@ class LoginController extends Controller
         return [
             $field => $request->get($this->username()),
             'password' => $request->password,
+            'role_id' => $request->role_id
         ];
+    }*/
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email'  => 'required|max:255|email',
+            'password' => 'required',
+            'role_id' =>'required|in:1,2,3'
+        ]);
+       
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password,'role_id'=>$request->role_id])) {
+            // Success
+            return redirect('/home');
+        } else {
+            return $this->sendFailedLoginResponse($request);
+            //return redirect()->back();
+        }
+
     }
 }

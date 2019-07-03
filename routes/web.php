@@ -27,6 +27,10 @@ Route::get('form',function(){
 	return view('form');
 });
 
+Route::get('post',function(){
+	return view('posts');
+})->name('post');
+
 Route::get("verify",function(){
 	return "Your email has been verified!";
 });
@@ -48,6 +52,7 @@ Route::group(['namespace'=>'Admin','middleware'=>['verified'],'prefix'=>'admin']
 		session('key', 'default');
 		echo session('key');
 	});
+	Route::get("string/encrypt","AdminController@encrypt");
 });
 
 
@@ -75,3 +80,9 @@ Route::get('event','StudentController@eventGenrate');
 
 Route::post('/ajax/imgupload','StudentController@imgupload')->name('ajaximg.upload');
 Route::get('/user/info','StudentController@show');
+
+
+// Use For the Social login Facebook/Twitter/Linkedin/Instagram/Gmail/Github
+Route::get('login/fb', 'SocialLoginController@redirectToProvider');
+Route::get('login/fb/callback', 'SocialLoginController@handleProviderCallback');
+Route::get('login/fb/user', 'SocialLoginController@index');

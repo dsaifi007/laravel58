@@ -96,7 +96,11 @@ class UserController extends Controller
     {
        $response = Auth::once($request->input());
        $user = Auth::user();
-       echo $user->email;die;
+       $user['id'] = (string)$user['id'];
+       if($user->email_verified_at == ''){
+        return response()->json(['message'=>"Your email is not verified ",'error_code'=>403]);
+       }
+       return response(["data"=>$user,"success"=>true]);
     }
 
     /**

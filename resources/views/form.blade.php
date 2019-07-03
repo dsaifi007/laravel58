@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Simple-admin-panel</title>
+  <title>Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -23,6 +23,7 @@
   <h2>Form</h2>
   <form action="{{ route('form.submited') }}" id="form1" method="POST" enctype="multipart/form-data" >
     @include('error_messages')
+
     <div class="form-group">
       {{ csrf_field() }}
      
@@ -32,7 +33,8 @@
 
      <div class="form-group">
       <label for="email">File1:</label>
-      <input type="file" class="form-control" id="file1"   name="file[]">
+      <input type="file" class="form-control" id="file1"   name="file">
+      <img src="#" id="preview_img" style="display:none">
     </div>
 
 <!--     <div class="form-group">
@@ -76,7 +78,7 @@
   @push('scripts')
    
     <script type="text/javascript">
-      $('document').ready(function(){
+      /*$('document').ready(function(){
       $("#ab").click(function(){
       if($(this).is(':checked')){
         $.ajaxSetup({
@@ -131,7 +133,28 @@
             }
         });
       });
-    });
+    });*/
+
+
+/*
+    function readURL(input) {
+      console.log(input.files[0]);
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        $('img#preview_img').show();
+        reader.onload = function(e) {
+
+          $('#preview_img').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#file1").change(function() {
+      readURL(this);
+      //alert("sss");
+    });*/
     </script>
 @endpush
 <div></div>

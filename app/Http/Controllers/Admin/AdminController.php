@@ -10,7 +10,7 @@ use App\Jobs\EmailSendingToUser;
 use Gate;
 use App\Models\AdminModel;
 use Illuminate\Support\Facades\URL;
-
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
@@ -118,6 +118,7 @@ class AdminController extends Controller
     }
     public function sendemail($id)
     {
+        
         $user = User::findOrFail($id);
         $a = dispatch(new \App\Jobs\EmailSendingToUser($user));
 
@@ -132,5 +133,12 @@ class AdminController extends Controller
         return URL::temporarySignedRoute(
             'test1', now()->addMinutes(1), ['user' => 1]
         );
+    }
+
+    public function encrypt()
+    {
+        //die("eee");
+        $user = User::findOrFail(5);
+        dd($user);
     }
 }
