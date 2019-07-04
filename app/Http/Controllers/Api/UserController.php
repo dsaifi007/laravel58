@@ -94,6 +94,17 @@ class UserController extends Controller
     }
     public function login(Request $request)
     {
+        $data = $request->all();
+        $validator =Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+       
+       if($validator->fails()){
+        $errors = $validator->errors();
+        return response()->json(["message"=>$errors->first(),'status'=>false]);
+       }
+
        $response = Auth::once($request->input());
        $user = Auth::user();
        $user['id'] = (string)$user['id'];

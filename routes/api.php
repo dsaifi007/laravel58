@@ -32,7 +32,7 @@ Route::group(['namespace'=>'Api'],function(){
 });
 
 Route::namespace('Api')->group(function () {
-    Route::post("login",'UserController@login')->middleware('test');
+    Route::post("login",'UserController@login');//->middleware('throttle:1,1');
 });
 Route::group(['namespace'=>'Api'],function(){
 
