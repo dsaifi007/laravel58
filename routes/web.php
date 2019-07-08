@@ -80,6 +80,17 @@ Route::get('event','StudentController@eventGenrate');
 
 Route::post('/ajax/imgupload','StudentController@imgupload')->name('ajaximg.upload');
 Route::get('/user/info','StudentController@show');
+Route::get('/user/access','StudentController@given_access_to_user');
+Route::get('/user/post/access','PostsController@user_post_access');
+
+
+// Role 
+Route::group(['middleware'=>'verified'],function(){
+	Route::get('/add/role', 'RoleController@index');
+	Route::post('/submited/role', 'RoleController@store')->name('role.submited');
+});
+
+
 
 
 // Use For the Social login Facebook/Twitter/Linkedin/Instagram/Gmail/Github

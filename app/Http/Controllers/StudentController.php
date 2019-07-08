@@ -138,4 +138,10 @@ class StudentController extends Controller
         //echo "Eee";
        dd($_FILES);
     }
+
+
+    public function given_access_to_user(Student $student)
+    {
+        $this->authorize('access_level',$student);
+    }
 }

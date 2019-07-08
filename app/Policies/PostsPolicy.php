@@ -80,4 +80,9 @@ class PostsPolicy
     {
         //
     }
+    public function u_post_access(User $user, Posts $posts)
+    {
+        echo $posts->user_id;
+        dd($posts);
+    }
 }

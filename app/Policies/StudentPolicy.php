@@ -86,4 +86,10 @@ class StudentPolicy
     {
         dd($user);
     }
+
+    public function access_level(User $user, Student $student)
+    {
+        //echo $student->id;
+        dd($student);
+    }
 }

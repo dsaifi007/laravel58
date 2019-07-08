@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Posts;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -122,5 +122,10 @@ class PostsController extends Controller
                 }
             // Attempt 5 times while resting 100ms in between attempts...
         }, 100);
+    }
+    public function user_post_access(Posts $posts)
+    {
+
+        $this->authorize('u_post_access', $posts);
     }
 }
