@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Auth::routes(['verify' => true]);
 //'middleware'=>'apiauth:api'
-Route::group(['namespace'=>'Api'],function(){
-    Route::get('user-info','UserController@index');//->middleware('throttle:4,1');
+Route::group(['namespace'=>'Api','middleware'=>['apiauth:api']],function(){
+    Route::get('user-info','UserController@index');
 	Route::resource('users', 'UserController');
 	Route::get('/user', function () {
     	return  UserResource::collection(User::all());

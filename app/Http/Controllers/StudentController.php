@@ -6,6 +6,7 @@ use App\Student;
 use Illuminate\Http\Request;
 use Gate;
 use App\Events\SendEmail;
+use DB;
 
 class StudentController extends Controller
 {
@@ -61,8 +62,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-       $this->authorize('view',$student);
-       echo $id;die;
+       $this->authorize('view',[$student,4]);
+       echo "accessible";
+       //echo $id;die;
     }
 
     /**
@@ -143,5 +145,20 @@ class StudentController extends Controller
     public function given_access_to_user(Student $student)
     {
         $this->authorize('access_level',$student);
+    }
+
+    public function map_city()
+    {
+     /* $data = DB::table("City")->select('id','CountryCode')->get();
+      $data1 = DB::table("country_code")->select('id','code')->get();
+      foreach ($data as $key => $value) {
+          foreach ($data1 as $k => $v) {
+              if($value->CountryCode == $v->code){
+                //echo $value->CountryCode;
+                DB::table('City')->where('CountryCode', $value->CountryCode)->update(['country_code_id' => $v->id]);
+              }
+          }
+      }*/
+      //dd($data);
     }
 }

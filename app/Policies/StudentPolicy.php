@@ -6,6 +6,7 @@ use App\User;
 use App\Student;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Posts;
+use DB;
 
 class StudentPolicy
 {
@@ -18,9 +19,10 @@ class StudentPolicy
      * @param  \App\Student  $student
      * @return mixed
      */
-    public function view(User $user, Student $student)
+    public function view(User $user, Student $student,$id=null)
     {
-        dd($student);
+        $data = DB::table('user_access_right')->where('user_id', $user->id)->first();
+        return (($data->module_id == $id) && ($data->access_id == 2))?true:false;
     }
 
     /**
