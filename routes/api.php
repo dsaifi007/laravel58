@@ -20,13 +20,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Auth::routes(['verify' => true]);
 //'middleware'=>'apiauth:api'
-Route::group(['namespace'=>'Api','middleware'=>['apiauth:api']],function(){
+Route::group(['namespace'=>'Api','middleware'=>['auth:api']],function(){
     Route::get('user-info','UserController@index');
 	Route::resource('users', 'UserController');
 	Route::get('/user', function () {
-    	return  UserResource::collection(User::all());
+    	return  UserResource::collection(User::all()->keyBy->id);
 	});
 	Route::get('user/login/{id?}','UserController@loginById')->middleware('throttle:4,1');
+
+	
 	//register
 	Route::post('user/register','UserController@usercreate');//->middleware('throttle:4,1');
 });

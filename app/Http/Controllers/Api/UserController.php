@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 use App\User;
-use Hash;
+//use Hash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 class UserController extends Controller
 {
     /**
@@ -124,6 +126,11 @@ class UserController extends Controller
     {
         $this->middleware('guest');
         $data = $request->all();
+        $token = Str::random(60);
+        $t = hash('sha256', $token);
+        echo $t."<br>";
+        echo $token;
+        dd($data);
         $validator =Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

@@ -14,6 +14,8 @@ class User extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+    public $preserveKeys = true;
+    
     public function toArray($request)
     {
         //return parent::toArray($request);
@@ -21,6 +23,8 @@ class User extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'username' => $this->username,
+            'api_token' => $this->api_token,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
