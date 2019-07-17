@@ -45,14 +45,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-         //dd($request->all());die;
+         dd($request->all());die;
         
          $validatedData = $request->validate([
             'post_title' => 'required|min:10|max:255',
             'post_description' => 'required'
             ]);       
          //echo $request->input('post_title');die;
-          \App\Post::create(['post_title' =>$request->input('post_title'),'post_description'=>$request->input('post_description'),'user_id'=>5]);
+         // \App\Post::create(['post_title' =>$request->input('post_title'),'post_description'=>$request->input('post_description'),'user_id'=>5]);
 
           //$path = $request->file('file')->store('img');
           //$obj = new Posts();

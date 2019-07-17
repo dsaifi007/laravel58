@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     *fsdf
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -124,6 +124,7 @@ class UserController extends Controller
      */
     public function usercreate(Request $request)
     {
+        die("ddd")
         $this->middleware('guest');
         $data = $request->all();
         $token = Str::random(60);
