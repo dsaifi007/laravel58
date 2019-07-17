@@ -21,6 +21,7 @@ class StudentPolicy
      */
     public function view(User $user, Student $student,$id=null)
     {
+        //dd($user);
         $data = DB::table('user_access_right')->where('user_id', $user->id)->first();
         return (($data->module_id == $id) && ($data->access_id == 2))?true:false;
     }
