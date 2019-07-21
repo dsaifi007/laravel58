@@ -92,11 +92,12 @@ class UserController extends Controller
     public function loginById($id)
     {
        $data = Auth::loginUsingId($id);
-       dd($data);
+       
     }
     public function login(Request $request)
     {
         $data = $request->all();
+        
         $validator =Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
@@ -108,12 +109,19 @@ class UserController extends Controller
        }
 
        $response = Auth::once($request->input());
-       $user = Auth::user();
+       if($response){
+               $user = Auth::user();
        $user['id'] = (string)$user['id'];
+       dd($user);
        if($user->email_verified_at == ''){
         return response()->json(['message'=>"Your email is not verified ",'error_code'=>403]);
        }
        return response(["data"=>$user,"success"=>true]);
+       }
+       else{
+        return response()->json(['message'=>"Credentials invalid",'error_code'=>401]);
+       }
+
     }
 
     /**
@@ -124,7 +132,7 @@ class UserController extends Controller
      */
     public function usercreate(Request $request)
     {
-        die("ddd")
+        die("ddd");
         $this->middleware('guest');
         $data = $request->all();
         $token = Str::random(60);
