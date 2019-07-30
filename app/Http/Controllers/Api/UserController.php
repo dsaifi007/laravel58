@@ -158,4 +158,9 @@ class UserController extends Controller
         $user->sendEmailVerificationNotification();
         return $user;
     }
+    public function change_lang()
+    {
+        $data = $request->all();
+        dd($data);
+    }
 }

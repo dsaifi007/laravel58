@@ -17,13 +17,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $user = User::find(5);
+        $user = User::find(1);
         echo $user->email;
-        //$post  = Posts::find(1);
-        //dd($user->user);
-        //echo $user->email;
         foreach ($user->posts as $post) {
-            echo $post->post_title."<br>";
+            echo $post->post_description."<br>";
         }
     }
 

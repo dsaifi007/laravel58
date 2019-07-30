@@ -120,9 +120,9 @@ class AdminController extends Controller
     {
         
         $user = User::findOrFail($id);
-       
+        
         $a = dispatch(new \App\Jobs\EmailSendingToUser($user));
-
+        var_dump($a);
     }
     public function test1()
     {

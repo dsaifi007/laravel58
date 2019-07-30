@@ -82,6 +82,7 @@ Route::post('/ajax/imgupload','StudentController@imgupload')->name('ajaximg.uplo
 Route::get('/user/info','StudentController@show');///////
 Route::get('/user/access','StudentController@given_access_to_user');
 Route::get('/user/post/access','PostsController@user_post_access');
+Route::get('/sendmail','PostsController@sendEmail');
 
 
 // Role 

@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'apiauth' => \App\Http\Middleware\ApiAuthentication::class,
         'test' => \App\Http\Middleware\TestingMiddleware::class,
         'middleware_parameter' => \App\Http\Middleware\MiddlewareParameter::class,
+        'localization' => \App\Http\Middleware\Localization::class,
     ];
 
     /**
