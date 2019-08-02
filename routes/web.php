@@ -18,10 +18,15 @@ Route::get('/test', function () {
     return view('welcome');
 });//->middleware('verified');
 
+Route::get('/model', function () {
+    return view('model');
+});
 
 Auth::routes(['verify' => true]);
 
 Route::post('form-submit','PostsController@store')->name('form.submited');
+
+Route::post('fsumbit','PostsController@store')->name('form.submited1');
 
 Route::get('form',function(){
 	return view('form');

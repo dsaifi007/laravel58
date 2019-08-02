@@ -42,23 +42,23 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-         dd($request->all());die;
+         //dd($request->all());die;
         
          $validatedData = $request->validate([
-            'post_title' => 'required|min:10|max:255',
+            'post_title' => 'required|min:4|max:255',
             'post_description' => 'required'
             ]);       
          //echo $request->input('post_title');die;
          // \App\Post::create(['post_title' =>$request->input('post_title'),'post_description'=>$request->input('post_description'),'user_id'=>5]);
 
           //$path = $request->file('file')->store('img');
-          //$obj = new Posts();
-          //$obj->post_title = $request->input('post_title');
-          //$obj->post_description = $request->input('post_description');
-          //$obj->user_id = 5;
-          //$obj->save();
+          $obj = new Posts();
+          $obj->post_title = $request->input('post_title');
+          $obj->post_description = $request->input('post_description');
+          $obj->user_id = 1;
+          $obj->save();
          //echo $path."sss";die;
-          return redirect('post')->with('added', 'Content has been added successfully!');
+          return redirect('model')->with('added', 'Content has been added successfully!');
     }
 
     /**
@@ -122,7 +122,7 @@ class PostsController extends Controller
     }
     public function user_post_access(Posts $posts)
     {
-
+        return view('form');
         $this->authorize('u_post_access', $posts);
     }
 }

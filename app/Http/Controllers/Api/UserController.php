@@ -92,6 +92,7 @@ class UserController extends Controller
     public function loginById($id)
     {
        $data = Auth::loginUsingId($id);
+       echo $data;
        
     }
     public function login(Request $request)
@@ -158,9 +159,25 @@ class UserController extends Controller
         $user->sendEmailVerificationNotification();
         return $user;
     }
-    public function change_lang()
+
+    public function addinfo(Request $request)
     {
         $data = $request->all();
+        $validator =Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'api_token' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+        $errors = $validator->errors();
+        if ($validator->fails()) {
+            return response()->json(['message'=>$errors->first(),'error_code'=>403]);
+        }
+        $obj = new User();
+        $obj->fill($data);
+        $obj->save();
         dd($data);
     }
+
+
 }

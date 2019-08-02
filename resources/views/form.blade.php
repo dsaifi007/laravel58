@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
   <style type="text/css">
     .bs{
       display:none;
@@ -23,7 +22,16 @@
   <h2>Form</h2>
   <form action="{{ route('form.submited') }}" id="form1" method="POST" enctype="multipart/form-data" >
     @include('error_messages')
-
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>Breadcumb</a></li>
+    <?php $segments = ''; ?>
+    @foreach(Request::segments() as $segment)
+        <?php $segments .= '/'.$segment; ?>
+        <li>
+            <a href="{{ $segments }}">{{ ucfirst($segment) }}</a>
+        </li>
+    @endforeach
+</ol>
     <div class="form-group">
       {{ csrf_field() }}
      
