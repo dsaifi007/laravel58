@@ -125,4 +125,8 @@ class PostsController extends Controller
         return view('form');
         $this->authorize('u_post_access', $posts);
     }
+    public function simplefunction()
+    {
+        echo "hello";
+    }
 }

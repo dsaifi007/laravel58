@@ -13,9 +13,9 @@ class TestingMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next,$extra=null)
     {
-        //echo "Eee";
+         print_r($extra);die;
         //dd($request->all());
         return $next($request);
     }

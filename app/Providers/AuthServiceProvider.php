@@ -32,6 +32,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('user-controller-access', function ($user, $user_controller) {
             return ($user->id == 56) ? true : false;;
         });
+
+        Gate::define('edit-user', function ($user) {
+            return ($user->id == 1) ? true : false;;
+        });
+
         Gate::define('custom-resource', function ($user) {
            // dd($user);
             return ($user->id == 5) ? true : false;;

@@ -39,7 +39,8 @@ Route::namespace('Api')->group(function () {
 Route::group(['namespace'=>'Api'],function(){
 	Route::get('user/login/{id?}','UserController@loginById');
 	Route::post('change/lang','UserController@change_lang')->middleware('localization');
-	Route::get('user/detail/{id?}','UserController@show')->middleware('auth:api');
+	
 	Route::post('user/add/info','UserController@addinfo');
 
 });
+Route::get('user/detail/{id?}','Api\UserController@show')->middleware('auth:api');

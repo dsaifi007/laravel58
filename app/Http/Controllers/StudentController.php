@@ -19,7 +19,7 @@ class StudentController extends Controller
     {
         //echo "ee";die;
         // for authentication of  resource
-        if(Gate::allows('custom-resource','App\User')){
+        if(Gate::allows('edit-user','App\User')){
             echo "Verify";
         }else{
             abort(403);

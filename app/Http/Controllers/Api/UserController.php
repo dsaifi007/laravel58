@@ -49,10 +49,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id=null)
     {
        $user = User::find($id);
-       return $user->toJson(JSON_PRETTY_PRINT);
+       if($user){
+        return $user->toJson(JSON_PRETTY_PRINT);
+       }
+       else{
+        return response()->json(["message"=>"No Data found",'status'=>false]);
+       }
 
     }
 
