@@ -32,7 +32,7 @@ Route::post('/user/registartion', 'Auth\RegisterController@add')->name('user.reg
 
 
 ///Salary 
-Route::get('/user/salary', 'SalaryController@index');
+Route::get('/user/salary', 'SalaryController@index')->middleware("verified");
 
 
 Route::get('send/email/{id}', "TestingController@sendemail");

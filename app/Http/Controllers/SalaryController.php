@@ -14,7 +14,11 @@ class SalaryController extends Controller
      */
     public function index()
     {
-        //$data = Salary::where(DB::raw('WHERE  salary NOT IN(SELECT MAX(salary) FROM salaries)')->max('salary');
+        /*$data = Salary::select(DB::raw('DISTINCT(salary) AS salary'))
+                    ->orderBy('salary', 'desc')
+                    ->limit(1,1)
+                    ->get();
+        d($data->toArray()); // ->toArray()*/
         // We can also use elequent model for getting this record if you want i can do it
         $max = DB::select(DB::raw('SELECT DISTINCT(salary) AS salary FROM salaries ORDER BY salary DESC LIMIT 0,1'));
         

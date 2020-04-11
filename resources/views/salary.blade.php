@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>2nd highest Employees salary list</h2>
+  <h2><b>1 - </b>2nd highest Employees salary list</h2>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -32,8 +32,8 @@
       @endforelse
     </tbody>
   </table>
-  <b>Max salary</b> - {{ $max[0]->salary }}<br>
-  For Sum of highest salary record Query is below(need to more clarify)<Br> 
+  <b>2 - </b><b>Max salary</b> - {{ $max[0]->salary }}<br>
+  <b>3 - </b>For Sum of highest salary record Query is below(need to more clarify)<Br> 
 "SELECT id,SUM(Salary) from table_name GROUP BY user_id ORDER BY salary DESC LMIT 0,1"
 </div>
 
