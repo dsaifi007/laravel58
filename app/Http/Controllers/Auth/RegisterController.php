@@ -50,11 +50,19 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20', 'unique:users'],
+            'username' => ['required', 'string', 'max:20', 'unique:App\User,username'],
             'first_name' => ['required', 'string', 'max:20'],
             'last_name' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
-        ]);
+            'mobile_number'=>['required','max:10','min:8','number_validation','unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:App\User,email'],
+             'password' => [
+                    'required',
+                    'min:8',             
+                    'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
+                ],
+        ], [
+            'number_validation' => 'First digit mobile number must be between 6 and 9!', 
+          ]);
     }
 
     /**
@@ -67,7 +75,8 @@ class RegisterController extends Controller
     {
 
         return User::create([
-            'name' => $data['name'],
+            'name'=>"dummy",
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'mobile_number'=>$data['mobile_number'],
@@ -90,7 +99,8 @@ class RegisterController extends Controller
                         ->withInput();
         }
        User::create([
-            'name' => $data['name'],
+            'name'=>"dummy",
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'mobile_number'=>$data['mobile_number'],

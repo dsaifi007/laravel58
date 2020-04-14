@@ -23,9 +23,9 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  autocomplete="name" autofocus>
 
-                                @error('name')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -74,9 +74,10 @@
                     
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
-
+        
                             <div class="col-md-6">
-                                <input id="mobile_number" type="number" class="form-control @error('mobile_number') is-invalid @enderror" name="mobile_number" value="{{ old('mobile_number') }}"  autocomplete="mobile_number" maxlength="10" onkeyup="checkNumber(this.value)">
+                                <!-- onkeyup="checkNumber(this.value)" -->
+                                <input id="mobile_number" type="number" class="form-control @error('mobile_number') is-invalid @enderror" name="mobile_number" value="{{ old('mobile_number') }}"  autocomplete="mobile_number" maxlength="10" >
                                 <span id='m_number'></span>
                                 @error('mobile_number')
                                     <span class="invalid-feedback number" role="alert">
@@ -134,7 +135,7 @@
 }, jQuery.validator.format("Please enter the correct value for {0} + {1}"));
 */
 
-    $("#register-form").validate({
+    $("#register-forms").validate({
       rules: {
         email: {
           required: true,
@@ -142,9 +143,10 @@
         },
         mobile_number:{
            required: true,
-           maxlength: 10 
+           maxlength: 10 ,
+           minlength:10
         },
-        name: {
+        username: {
           required: true,
           maxlength: 20 
         },
