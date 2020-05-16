@@ -6,18 +6,7 @@
     <div class="card-body">
       <h4 class="card-title">Add New User</h4>
       <p class="card-description">  </p>
-      @if ($errors->any())
-      <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-        {{ $error }}
-        @endforeach
-      </div>
-      @endif
-      @if (session('status'))
-      <div class="alert alert-success">
-        {{ session('status') }}
-      </div>
-      @endif
+      @include('errorr.display_message');
       <form action='' class="forms-sample" id='add-user' autocomplete="off" method='post'>
        @csrf
        <div class="form-group">

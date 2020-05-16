@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers;
-
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use Validator;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(500);
         Validator::extend('number_validation', function ($attribute, $value, $parameters, $validator) {
             return (($value[0] >= 6) && ($value[0] <= 9));
         });
+
     }
 }

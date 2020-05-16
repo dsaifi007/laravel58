@@ -1,4 +1,5 @@
  </div>
+ 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -16,22 +17,24 @@
     <!-- container-scroller -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
     <script src="{{ URL::asset('admin/js/script.js') }}"></script>
+    
 
 
     <!-- plugins:js -->
     <script src="{{ URL::asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{ URL::asset('admin/vendors/chart.js/Chart.min.js') }}"></script>
+    @stack("scripts")
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ URL::asset('admin/js/off-canvas.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/misc.js') }}"></script>
+    <!--<script src="{{ URL::asset('admin/jsd/off-canvas.js') }}"></script>
+    <script src="{{ URL::asset('admin/jsd/hoverable-collapse.js') }}"></script>
+    <script src="{{ URL::asset('admin/jsd/misc.js') }}"></script>-->
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="{{ URL::asset('admin/js/dashboard.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/todolist.js') }}"></script>
+    <!--<script src="{{ URL::asset('admin/jsd/dashboard.js') }}"></script>
+    <script src="{{ URL::asset('admin/jsd/todolist.js') }}"></script>-->
     <!-- End custom js for this page -->
+
   </body>
 </html>
